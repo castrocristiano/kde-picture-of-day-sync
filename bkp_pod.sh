@@ -3,7 +3,8 @@
 date_name=$(date +%Y%m%d)
 pod_source_path="$HOME/.cache/plasma_engine_potd"
 pod_path="$HOME/pod_bkp"
-pod_log_file="$pod_path/log/log_$date_name.log"
+pod_log_path="$pod_path/log/"
+pod_log_file="$pod_log_path/log_$date_name.log"
 pod_bkp_path="$pod_path/$date_name"
 
 find_dir_or_create() {
@@ -19,10 +20,13 @@ find_dir_or_create() {
     return 1 
 }
 
-find_dir_or_create "$pod_path" 
+find_dir_or_create "$pod_path/" 
+
+find_dir_or_create "$pod_log_path/" 
+
 
 clear_logs() {
-    echo "clar logs"
+    echo "clear logs"
     rm "$pod_path/log_*.log" -rf
 } 
 
